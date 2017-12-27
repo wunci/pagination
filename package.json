@@ -1,0 +1,19 @@
+{
+  "name": "pagination",
+  "version": "1.0.0",
+  "description": "a pagination plugin",
+  "main": "src/pagination.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wclimb/pagination.git"
+  },
+  "author": "wclimb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wclimb/pagination/issues"
+  },
+  "homepage": "https://github.com/wclimb/pagination#readme"
+}
