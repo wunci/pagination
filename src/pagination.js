@@ -12,8 +12,9 @@ function pagination(data,callback){
 		inputGo = document.getElementById('inputGo'),
 		currentPage =  data.currentPage,
 		nowPage = currentPage ? currentPage : 1,
-		visiblePage = Math.ceil(data.visiblePage / 2)
-		i_html = '';
+		visiblePage = Math.ceil(data.visiblePage / 2),
+		i_html = '',
+		pageOneLoad = data.pageOneLoad ? false : true;
 	// 初始化
 	pageAction(nowPage)
 	function pageAction(dataPage){
@@ -60,12 +61,16 @@ function pagination(data,callback){
 				pageA[i].className = "active"
 			}
 		}
-		callback && callback.call(null,dataPage)	
+		// 第一页不请求
+		if (!pageOneLoad) {
+			callback && callback.call(null,dataPage)	
+		}
 	}
 	page.onclick = function(event){
 		var event = event || window.event,
 		 	target = event.target || event.srcElement,
 			dataPage = parseInt(target.getAttribute('data-page'));
+			pageOneLoad = false;
 		if (target.nodeName.toLowerCase() == 'a') {
 			pageAction(dataPage)
 		}
