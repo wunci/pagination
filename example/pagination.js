@@ -3,7 +3,7 @@ function pagination(data,callback){
 	if(!document.getElementById('pageStyle')){
 		var style = document.createElement('style')
 		style.id = 'pageStyle'
-		style.innerHTML='.pagination{text-align:center;margin-top:100px}.pagination a,.pagination span{margin:0 2px;padding:4px 8px;color:#428bca;background:#fff;text-decoration:none;border:1px solid #ddd;border-radius:4px;user-select:none;cursor:pointer}.pagination a:hover,.pagination span:hover{color:#fff;background:#428bca}.pagination .active{color:#fff;background:#428bca}.pagination input{width:40px;padding:7px 0;border:none;outline:0;border:1px solid #ddd;border-radius:4px;text-align:center;margin:0 5px}.pagination input:focus{border:1px solid #428bca}'
+		style.innerHTML='.pagination{text-align:center;margin-top:100px}.pagination a,.pagination span{margin:0 2px;padding:4px 8px;color:#428bca;background:#fff;text-decoration:none;border:1px solid #ddd;border-radius:4px;user-select:none;cursor:pointer}.pagination a:hover,.pagination span:hover{color:#fff;background:#428bca}.pagination .active{color:#fff;background:#428bca}.pagination input{width:40px;padding:7px 0;border:none;outline:0;border:1px solid #ddd;border-radius:4px;text-align:center;margin:0 5px}.pagination i{font-style: normal;margin:0 5px;color:#999}.pagination input:focus{border:1px solid #428bca}'
 		document.getElementsByTagName('head')[0].appendChild(style)
 	}
 	var page = document.getElementById(data.selector.slice(1)),
@@ -49,6 +49,9 @@ function pagination(data,callback){
 				i_html += '<a data-page="'+ data.totalPage +'" href=\"javascript:void(0);\">尾页</a>'
 			}
 			i_html += '<span id=\"nextPage\">'+ nextPage +'</span>'
+		}
+		if (data.showTotalPage) {
+			i_html += '<i>'+ nowPage+'/'+data.totalPage +'</i>' 
 		}
 		if (data.jumpBtn) {
 			i_html += '前往<input id="pageInput" type="text" />页 <span id="inputGo">确定</span>'
