@@ -50,10 +50,10 @@ function pagination(data,callback){
 			}
 			i_html += '<span id=\"nextPage\">'+ nextPage +'</span>'
 		}
-		if (data.showTotalPage) {
+		if (data.showTotalPage && data.totalPage >= 1) {
 			i_html += '<i>'+ nowPage+'/'+data.totalPage +'</i>' 
 		}
-		if (data.jumpBtn) {
+		if (data.jumpBtn && data.totalPage >= 1) {
 			i_html += '前往<input id="pageInput" type="text" />页 <span id="inputGo">确定</span>'
 		}
 		page.innerHTML = i_html;
@@ -87,7 +87,7 @@ function pagination(data,callback){
 		}
 		if (target.id == 'inputGo') {
 			var pageInput = document.getElementById('pageInput'),
-			    goPage = pageInput.value > data.totalPage ? pageInput.value : /[1-9]+/g.test(pageInput.value) ? pageInput.value : 1;
+			    goPage = pageInput.value > data.totalPage ? 1 : /[1-9]+/g.test(pageInput.value) ? pageInput.value : 1;
 			pageAction(parseInt(goPage))
 		}
 	}

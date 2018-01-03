@@ -18,6 +18,7 @@ function pagination(data,callback){
 	// 初始化
 	pageAction(nowPage)
 	function pageAction(dataPage){
+		if (dataPage == nowPage && dataPage !== currentPage) return
 		nowPage = dataPage;
 		i_html = '';
 		var count = data.count <= 1 ? 1 : data.count ? data.count : 2
@@ -87,7 +88,7 @@ function pagination(data,callback){
 		}
 		if (target.id == 'inputGo') {
 			var pageInput = document.getElementById('pageInput'),
-			    goPage = pageInput.value > data.totalPage ? pageInput.value : /[1-9]+/g.test(pageInput.value) ? pageInput.value : 1;
+			    goPage = pageInput.value > data.totalPage ? 1 : /[1-9]+/g.test(pageInput.value) ? pageInput.value : 1;
 			pageAction(parseInt(goPage))
 		}
 	}
